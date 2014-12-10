@@ -50,6 +50,10 @@ $(document).ready(function () {
 <body>
 
 <div class="nav-box">
+<span class="toolbar">
+<a class="toolitem" href="#" onClick="reloadPage();"><img src="${pageContext.request.contextPath}/css/list-delete.png"></a>
+<a class="toolitem" href="#" onClick="reloadPage();"><img src="${pageContext.request.contextPath}/css/reload.png"></a>
+</span>
 <h1>${shoplist.name }</h1>
 </div>
 <div>

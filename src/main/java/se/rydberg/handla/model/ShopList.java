@@ -1,7 +1,9 @@
 package se.rydberg.handla.model;
 
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -10,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -27,7 +31,7 @@ public class ShopList implements Serializable{
 	private Integer listId;
 	private String name;
 	public Set<Article> articles = new LinkedHashSet<Article>();
-//	private List shoppers;
+	private List<User> shoppers;
 	
 	public ShopList() {
 		
@@ -54,7 +58,7 @@ public class ShopList implements Serializable{
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, orphanRemoval = true)
 	@Cascade(org.hibernate.annotations.CascadeType.DELETE)
-	@OrderBy("title asc")
+	@OrderBy("bought,title asc")
 	@JoinColumn(name="fk_shoplist")
 	
 	public Set<Article> getArticles() {
@@ -63,4 +67,28 @@ public class ShopList implements Serializable{
 	public void setArticles(Set<Article> articles) {
 		this.articles = articles;
 	}
+
+	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinTable(name = "shoplist_users", joinColumns = { @JoinColumn(name = "SHOPLIST_ID") }, inverseJoinColumns = { @JoinColumn(name = "USER_ID") })
+    public List<User> getShoppers() {
+        return shoppers;
+    }
+
+    public void setShoppers(List<User> shoppers) {
+        this.shoppers = shoppers;
+    }
+    
+    public void addUser(User user){
+        shoppers.add(user);
+    }
+    
+    public void removeUser(User userToRemove){
+        Iterator<User> itt = shoppers.iterator();
+        while(itt.hasNext()){
+            User u = itt.next();
+            if(u.getId().equals(userToRemove.getId())){
+                itt.remove();
+            }
+        }
+    }
 }
