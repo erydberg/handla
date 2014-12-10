@@ -5,16 +5,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Handla</title>
+<title>Användare</title>
 <jsp:include page="include_metadata.jsp" flush="false"></jsp:include>
 </head>
 
 <script>
 function confirmDelete(id){
-	var r=confirm("Vill du ta bort listan?");
+	var r=confirm("Vill du ta bort användaren?");
 	if (r==true)
 	  {
-		window.location.href = '${pageContext.request.contextPath}/shoplist/delete/'+id;
+		window.location.href = '${pageContext.request.contextPath}/user/delete/'+id;
 	  }
 	else
 	  {
@@ -26,17 +26,15 @@ function confirmDelete(id){
 
 <div class="nav-box">
 <h1>Handla</h1>
-<a href="${pageContext.request.contextPath}/shoplist/new">Ny lista</a>
+<a href="${pageContext.request.contextPath}/user/new">Ny användare</a>
 </div>
 <div class="notepad">
 <ul class="list">
-<c:forEach items="${shoplists }" var="shoplist">
-	<li><a href="${pageContext.request.contextPath}/shoplist/open/${shoplist.listId}">${shoplist.name }</a> <a href="#" onclick="return confirmDelete(${shoplist.listId});" class="del"><img src="${pageContext.request.contextPath}/css/delete.png"></a></li>
+<c:forEach items="${users }" var="user">
+	<li><a href="${pageContext.request.contextPath}/user/open/${user.id}">${user.username }</a> <a href="#" onclick="return confirmDelete(${user.id});" class="del"><img src="${pageContext.request.contextPath}/css/delete.png"></a></li>
 </c:forEach>
 </ul>
 </div>
-<div>
-<a href="${pageContext.request.contextPath}/user">Visa användare</a>
-</div>
+<div><a href="${pageContext.request.contextPath}">Tillbaka</a></div>
 </body>
 </html>

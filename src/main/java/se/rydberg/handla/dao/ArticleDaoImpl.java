@@ -43,7 +43,7 @@ public class ArticleDaoImpl implements ArticleDao {
 	@Override
 	public List<Article> getAllArticles() {
 		@SuppressWarnings("unchecked")
-		List<Article> articles = sessionFactory.getCurrentSession().createQuery("from Article as art order by art.title asc").list();
+		List<Article> articles = sessionFactory.getCurrentSession().createQuery("from Article as art order by art.bought,art.title asc").list();
 		return articles;
 	}
 

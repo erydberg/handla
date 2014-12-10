@@ -5,6 +5,7 @@ import java.util.List;
 import se.rydberg.handla.exception.ShopListNotFoundException;
 import se.rydberg.handla.exception.ShopListNotSavedException;
 import se.rydberg.handla.model.ShopList;
+import se.rydberg.handla.model.User;
 
 public interface ShopListService {
 	public void deleteShopList(ShopList shopList);
