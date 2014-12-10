@@ -4,7 +4,7 @@
 <link rel="apple-touch-icon"
 	href="${pageContext.request.contextPath}/css/apple-touch-icon.png" />
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/style.css" />
+	href="${pageContext.request.contextPath}/css/style2.css" />
 <script type="text/javascript">
 	if (("standalone" in window.navigator) && window.navigator.standalone) {
 		var noddy, remotes = false;
