@@ -1,5 +1,6 @@
 package se.rydberg.handla.service;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import se.rydberg.handla.dao.ShopListDao;
 import se.rydberg.handla.exception.ShopListNotFoundException;
 import se.rydberg.handla.exception.ShopListNotSavedException;
+import se.rydberg.handla.model.Article;
 import se.rydberg.handla.model.ShopList;
 
 @Service
@@ -32,7 +34,6 @@ public class ShopListServiceImpl implements ShopListService {
 			this.deleteShopList(shopList);
 		} catch (ShopListNotFoundException e) {
 			throw new ShopListNotFoundException("Kan inte hitta lista med id: " + id + " för borttag");
-			
 		}
 	}
 
@@ -52,5 +53,27 @@ public class ShopListServiceImpl implements ShopListService {
 	@Transactional
 	public ShopList getShopListById(Integer id) throws ShopListNotFoundException {
 		return shopListDao.getShopListById(id);
+	}
+	
+	@Override
+	@Transactional
+	public void deleteBoughtArticlesFromShopListWithId(Integer id) throws ShopListNotSavedException{
+	    ShopList shoplist;
+        try {
+            shoplist = getShopListById(id);
+            Iterator<Article> itt = shoplist.getArticles().iterator();
+            while(itt.hasNext()){
+                Article article = itt.next();
+                System.out.println("artikel: " + article.getTitle() + " bought: " + article.isBought());
+                if(article.isBought()){
+                    System.out.println("artikel: " + article.getTitle() + " bought: " + article.isBought());
+                    itt.remove();
+                }
+            }
+            saveShopList(shoplist);    
+        } catch (ShopListNotFoundException e) {
+            //No need to do anything, no shoplist, no articles to remove
+        }
+	    
 	}
 }

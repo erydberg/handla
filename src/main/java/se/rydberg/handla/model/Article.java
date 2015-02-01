@@ -84,6 +84,4 @@ public class Article implements Serializable {
 	public void setBought(boolean bought) {
 		this.bought = bought;
 	}
-	
-	
 }
