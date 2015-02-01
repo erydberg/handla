@@ -13,4 +13,5 @@ public interface ShopListService {
 	public List<ShopList> getAllShopLists();
 	public void saveShopList(ShopList shopList) throws ShopListNotSavedException;
 	public ShopList getShopListById(Integer id) throws ShopListNotFoundException;
+    void deleteBoughtArticlesFromShopListWithId(Integer id) throws ShopListNotSavedException,ShopListNotFoundException;
 }

@@ -74,7 +74,6 @@ public class ShopListController {
 		try {
 			shopList = shopListService.getShopListById(Integer.parseInt(id));
 		} catch (NumberFormatException | ShopListNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Article article = new Article();
@@ -82,6 +81,21 @@ public class ShopListController {
 		map.addAttribute("shoplist", shopList);
 		logger.info("shoplist into model: " + shopList.getName() + " with no of articles: " + shopList.getArticles().size());
 		return new ModelAndView("viewshoplist",map);
+	}
+	
+	/**
+	 * Deletes articles from a list that has been marked bought
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value="/deleteboughtarticlesfromlistid/{id}", method=RequestMethod.GET)
+	public String deleteBoughtArticlesFromListWithId(@PathVariable String id){
+	    try {
+            shopListService.deleteBoughtArticlesFromShopListWithId(Integer.parseInt(id));
+        } catch (NumberFormatException | ShopListNotSavedException | ShopListNotFoundException e) {
+            e.printStackTrace();
+        }
+	    return "redirect:/shoplist/open/" + id;
 	}
 	
 	

@@ -45,13 +45,14 @@ $(document).ready(function () {
    function reloadPage(){
 	   window.location = window.location.pathname;
    }
+   
 </script>
 </head>
 <body>
 
 <div class="nav-box">
 <span class="toolbar">
-<a class="toolitem" href="#" onClick="reloadPage();"><img src="${pageContext.request.contextPath}/css/list-delete.png"></a>
+<a class="toolitem" href="${pageContext.request.contextPath}/shoplist/deleteboughtarticlesfromlistid/${shoplist.listId}" onClick="reloadPage();"><img src="${pageContext.request.contextPath}/css/list-delete.png"></a>
 <a class="toolitem" href="#" onClick="reloadPage();"><img src="${pageContext.request.contextPath}/css/reload.png"></a>
 </span>
 <h1>${shoplist.name }</h1>

@@ -91,4 +91,10 @@ public class ShopList implements Serializable{
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return "ShopList [listId=" + listId + ", name=" + name + ", articles=" + articles + "]";
+    }
+    
 }
