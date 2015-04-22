@@ -45,9 +45,7 @@ public class UserController {
     @RequestMapping(value="/save", method=RequestMethod.POST)
     public String saveUser(@ModelAttribute("user")User user, HttpServletRequest request){
         System.out.println("användare håller på att sparas: " + user.toString());
-        userService.saveUser(user);
-        //TODO fixa ett bättre ställe att gå tillbaka till än just start
-        
+        userService.saveUser(user);       
         return "redirect:/user";
     }
     

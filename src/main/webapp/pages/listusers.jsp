@@ -25,8 +25,11 @@ function confirmDelete(id){
 <body>
 
 <div class="nav-box">
-<h1>Handla</h1>
-<a href="${pageContext.request.contextPath}/user/new">Ny användare</a>
+<span class="toolbar">
+<a class="toolitem" href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/css/back.png"></a>
+<a class="toolitem" href="${pageContext.request.contextPath}/user/new"><img src="${pageContext.request.contextPath}/css/newuser.png"></a>
+</span>
+<h1>Användare</h1>
 </div>
 <div class="notepad">
 <ul class="list">

@@ -22,18 +22,4 @@
 		    "select username, role from users where username =?  " />
 	  </authentication-provider>
 	</authentication-manager>
-	
-	<!--  <authentication-manager>
-		<authentication-provider>
-			<user-service>
-				<user name="erik" password="erik" authorities="ROLE_ADMIN,ROLE_USER" />
-				<user name="lotta" password="lotta" authorities="ROLE_ADMIN,ROLE_USER" />
-				<user name="sara" password="sara" authorities="ROLE_USER" />
-				<user name="emma" password="emma" authorities="ROLE_USER" />
-				<user name="anna" password="anna" authorities="ROLE_USER" />
-				<user name="annan" password="annan" authorities="ROLE_USER" />
-			</user-service>
-		</authentication-provider>
-	</authentication-manager>
--->
 </beans:beans>

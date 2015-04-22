@@ -25,8 +25,10 @@ function confirmDelete(id){
 <body>
 
 <div class="nav-box">
+<span class="toolbar">
+<a class="toolitem" href="${pageContext.request.contextPath}/shoplist/new"><img src="${pageContext.request.contextPath}/css/newlist.png"></a>
+</span>
 <h1>Handla</h1>
-<a href="${pageContext.request.contextPath}/shoplist/new">Ny lista</a>
 </div>
 <div class="notepad">
 <ul class="list">

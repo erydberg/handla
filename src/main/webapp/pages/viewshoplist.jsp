@@ -52,6 +52,7 @@ $(document).ready(function () {
 
 <div class="nav-box">
 <span class="toolbar">
+<a class="toolitem" href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/css/back.png"></a>
 <a class="toolitem" href="${pageContext.request.contextPath}/shoplist/deleteboughtarticlesfromlistid/${shoplist.listId}" onClick="reloadPage();"><img src="${pageContext.request.contextPath}/css/list-delete.png"></a>
 <a class="toolitem" href="#" onClick="reloadPage();"><img src="${pageContext.request.contextPath}/css/reload.png"></a>
 </span>
@@ -73,7 +74,7 @@ $(document).ready(function () {
 </ul>
 
 <div class="submit-area">
-<a href="#" onClick="reloadPage();">Uppdatera listan</a> | <a href="${pageContext.request.contextPath}">Tillbaka</a>
+<a href="#" onClick="reloadPage();">Uppdatera listan</a> | <a href="${pageContext.request.contextPath}/">Tillbaka</a>
 </div>
 </form:form>
 </body>
