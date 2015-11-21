@@ -40,48 +40,20 @@ public class ArticleController {
 	@RequestMapping(value="/addtoshoplist/{id}",method=RequestMethod.POST)
 	public String addArticleToShopList(@ModelAttribute("article")Article article, @PathVariable String id, HttpServletRequest request){
 		logger.info("start saveShopList - koppla artikel till lista med id " + id);
-//		logger.info("Vi har med shoplist " + shopList.getName());
-		String redirectUrl = "/shoplist/";
-
 		if(!article.getTitle().isEmpty()){
-//			ShopList shopList = null;
 			try {
-//				shopList = shopListService.getShopListById(Integer.parseInt(id));
-				redirectUrl = "/shoplist/open/" + id;
 				articleService.saveArticle(article);
-				
 				ShopList shopList = shopListService.getShopListById(Integer.parseInt(id));
 				shopList.getArticles().add(article);
 				shopListService.saveShopList(shopList);
-
-//
-//			} catch (NumberFormatException | ShopListNotFoundException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
 			} catch (ArticleNotSavedException | NumberFormatException | ShopListNotFoundException | ShopListNotSavedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-
 			}
 		}
-
-
-
+		String redirectUrl = "/shoplist/open/" + id;
 		logger.info("redirecturl: " + redirectUrl);
 		return "redirect:" + redirectUrl;
-
-		////		ModelMap map = new ModelMap();
-		//		Article newarticle = new Article();
-		////		request.setAttribute("article", newarticle);
-		//		request.setAttribute("shoplist", shopList);
-		//		logger.info("värde på newarticle: " + newarticle.getId());
-		//		logger.info("what about old article? " + article.getId());
-		////		map.put("article", article);
-		////		map.put("shoplist", shopList);
-		//		
-		//		return new ModelAndView("viewshoplist","article", newarticle);
-		//		
-
 	}
 
 	//markera köpt/oköpt via restanrop
