@@ -1,10 +1,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
 <meta name="apple-mobile-web-app-capable" content="yes">
-<link rel="apple-touch-icon"
-	href="${pageContext.request.contextPath}/css/apple-touch-icon.png" />
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/style2.css" />
+<link rel="apple-touch-icon" href="${pageContext.request.contextPath}/css/apple-touch-icon.png" />
+<link href="${pageContext.request.contextPath}/css/favicon.png" rel="shortcut icon" type="image/png" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style2.css" />
 <script type="text/javascript">
 	if (("standalone" in window.navigator) && window.navigator.standalone) {
 		var noddy, remotes = false;
