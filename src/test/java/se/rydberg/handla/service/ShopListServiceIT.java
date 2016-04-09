@@ -23,7 +23,7 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"/mvc-dispatcher-servlet.xml"})
-public class ShopListServiceTest {
+public class ShopListServiceIT {
     private static final String LISTNAME = "junittest";
     private static final String LISTNAME_WITH_USERS ="junittest med användare";
     

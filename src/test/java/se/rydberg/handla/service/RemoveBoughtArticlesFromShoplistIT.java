@@ -19,7 +19,7 @@ import se.rydberg.handla.model.ShopList;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"/mvc-dispatcher-servlet.xml"})
-public class RemoveBoughtArticlesFromShoplistTest {
+public class RemoveBoughtArticlesFromShoplistIT {
 
     @Autowired
     ShopListService shopListService;

@@ -21,7 +21,7 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"/mvc-dispatcher-servlet.xml"})
-public class UserServiceTest {
+public class UserServiceIT {
 
     
     private static final String USER_NAME = "junittestuser";
