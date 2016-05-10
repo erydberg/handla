@@ -8,7 +8,6 @@ public class AnalyzeCentence {
     StringBuilder title;
     TitleDetail details;
     
-        
     public AnalyzeCentence(){
         title = new StringBuilder();
         details = new TitleDetail();
@@ -26,7 +25,14 @@ public class AnalyzeCentence {
             }else if(analyze.isUnit(word)){
                 details.setUnit(word);
             }else if(analyze.isNumericAndString(word)){
-                //TODO - split into quantity and unit
+                TextNumber textNumber = analyze.splitNumericAndString(word);
+                details.setQuantity(textNumber.getNumber());
+                if(analyze.isUnit(textNumber.getText())){
+                    details.setUnit(textNumber.getText());
+                }else{
+                    title.append(textNumber.getText());
+                    title.append(" ");
+                }
             }
             else{
                 title.append(word);

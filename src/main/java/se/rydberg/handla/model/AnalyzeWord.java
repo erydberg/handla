@@ -67,31 +67,47 @@ public class AnalyzeWord {
 
 
 
-    public Map<Double,String> splitNumericAndString(String word) {
+    public TextNumber splitNumericAndString(String word) {
         //kollar om första tecknet är en siffra, annars kanske vi inte ska ta hänsyn till det hela
+        StringBuilder number = new StringBuilder();
+        StringBuilder text = new StringBuilder();
         
-        if(Character.isDigit(word.charAt(0))){
-            Pattern p = Pattern.compile("-?[\\d\\,]+");
-            List<String> numbers = new ArrayList<String>();
-            Matcher m = p.matcher(word);
-
-            while (m.find()) {
-                numbers.add(m.group());
+        for(Character character:word.toCharArray()){
+            if(Character.isDigit(character)){
+                number.append(character);
+            }else{
+                text.append(character);
             }
-
-            Pattern patternText = Pattern.compile("[a-zA-Z]+");
-            List<String> text = new ArrayList<String>();
-            Matcher t = patternText.matcher(word);
-
-            while (t.find()) {
-                System.out.println("t.läggertill");
-                text.add(t.group());
-            }
-            System.out.println("text: " + text);
-
         }
-
-
-        return new HashMap<Double,String>();
+        TextNumber textNumber = new TextNumber();
+        textNumber.setNumber(number.toString());
+        textNumber.setText(text.toString());;
+        
+        return textNumber;
+        
+        
+//        if(Character.isDigit(word.charAt(0))){
+//            Pattern p = Pattern.compile("-?[\\d\\,]+");
+//            List<String> numbers = new ArrayList<String>();
+//            Matcher m = p.matcher(word);
+//
+//            while (m.find()) {
+//                numbers.add(m.group());
+//            }
+//
+//            Pattern patternText = Pattern.compile("[a-zA-Z]+");
+//            List<String> text = new ArrayList<String>();
+//            Matcher t = patternText.matcher(word);
+//
+//            while (t.find()) {
+//                System.out.println("t.läggertill");
+//                text.add(t.group());
+//            }
+//            System.out.println("text: " + text);
+//
+//        }
+//
+//
+//        return new HashMap<Double,String>();
     }
 }

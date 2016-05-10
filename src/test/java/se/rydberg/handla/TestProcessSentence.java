@@ -73,7 +73,7 @@ public class TestProcessSentence {
     
     @Test
     public void shouldSplitAndReturnADetailedTitleObject7(){
-        String incomingItem = "2 kg potatis fasta";
+        String incomingItem = "2kg potatis fasta";
         AnalyzeCentence analyze = new AnalyzeCentence();
         TitleDetail details = analyze.splitCentence(incomingItem);
         assertThat(details.getTitle(),equalTo("potatis fasta"));
