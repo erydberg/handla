@@ -2,13 +2,6 @@ package se.rydberg.handla.model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.text.NumberFormat;
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -40,7 +33,7 @@ public class Article implements Serializable {
     }
 
 
-   
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "article_sequence")
@@ -58,10 +51,6 @@ public class Article implements Serializable {
         return title;
     }
     public void setTitle(String title) {
-        //Här kanske jag kan försöka splitta upp det hela?
-        //Typ, AnalyzeCentence(title);
-        //Retur, något temp-objekt med title, quantity och unit (fast som ju är en del av artikeln)
-        //kanske räcker med en map?
         this.title = title;
     }
 
