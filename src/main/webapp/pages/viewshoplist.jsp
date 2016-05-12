@@ -69,7 +69,15 @@ $(document).ready(function () {
 <form:form method="post" action="${pageContext.request.contextPath}/shoplist/reload/" modelAttribute="shoplist" cssClass="notepad">
 <ul class="list">
 <c:forEach items="${shoplist.articles }" var="article" varStatus="counter">
-	<li><form:checkbox path="articles[${counter.index}].bought" id="${article.id}"/><label for="${article.id}"> ${article.title }</label> <a href="${pageContext.request.contextPath}/article/delete/${article.id}/from/${shoplist.listId}" class="del"><img src="${pageContext.request.contextPath}/css/delete.png"></a></li>	
+	<li><form:checkbox path="articles[${counter.index}].bought" id="${article.id}"/><label for="${article.id}"> 
+		${article.title}
+		<c:if test="${not empty article.quantity }">
+		 ${article.quantity}
+		 </c:if> 
+		 <c:if test="${not empty article.unit }">
+		 ${article.unit}
+		</c:if>
+	</label> <a href="${pageContext.request.contextPath}/article/delete/${article.id}/from/${shoplist.listId}" class="del"><img src="${pageContext.request.contextPath}/css/delete.png"></a></li>	
 </c:forEach>
 </ul>
 

@@ -36,5 +36,14 @@ public class TestSplitNumberAndTextInOneWord {
         assertThat(textNumber.getText(),equalTo(""));
         assertThat(textNumber.getNumber(),equalTo("15"));
     }
+    
+    @Test
+    public void shouldReturnAsTextSinceNumberIsNotTheFirstLetter(){
+        String incomingText = "bohus15gram";
+        AnalyzeWord analyzeWord = new AnalyzeWord();
+        TextNumber textNumber = analyzeWord.splitNumericAndStingIfFirstLetterIsDigit(incomingText);
+        assertThat(textNumber.getText(),equalTo("bohus15gram"));
+        assertThat(textNumber.getNumber(),equalTo(""));
+    }
 }
 

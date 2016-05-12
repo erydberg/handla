@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertThat;
 import se.rydberg.handla.model.AnalyzeCentence;
-import se.rydberg.handla.model.Article;
 import se.rydberg.handla.model.TitleDetail;
 
 public class TestProcessSentence {

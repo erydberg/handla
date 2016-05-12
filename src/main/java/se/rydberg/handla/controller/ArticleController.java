@@ -42,7 +42,6 @@ public class ArticleController {
 		logger.info("start saveShopList - koppla artikel till lista med id " + id);
 		if(!article.getTitle().isEmpty()){
 			try {
-			    //anropa validering och transformering av title-fält
 				articleService.saveArticle(article);
 				ShopList shopList = shopListService.getShopListById(Integer.parseInt(id));
 				shopList.getArticles().add(article);

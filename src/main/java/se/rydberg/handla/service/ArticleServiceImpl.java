@@ -3,7 +3,6 @@ package se.rydberg.handla.service;
 import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +11,9 @@ import se.rydberg.handla.exception.ArticleNotDeletedException;
 import se.rydberg.handla.exception.ArticleNotFoundException;
 import se.rydberg.handla.exception.ArticleNotSavedException;
 import se.rydberg.handla.exception.ShopListNotFoundException;
+import se.rydberg.handla.model.AnalyzeCentence;
 import se.rydberg.handla.model.Article;
+import se.rydberg.handla.model.TitleDetail;
 
 @Service
 public class ArticleServiceImpl implements ArticleService {
@@ -48,6 +49,11 @@ public class ArticleServiceImpl implements ArticleService {
 	@Override
 	@Transactional
 	public void saveArticle(Article article) throws ArticleNotSavedException {
+	    AnalyzeCentence analyze = new AnalyzeCentence();
+	    TitleDetail details = analyze.splitCentence(article.getTitle());
+	    article.setTitle(details.getTitle());
+	    article.setQuantity(details.getQuantity());
+	    article.setUnit(details.getUnit());
 		articleDao.saveArticle(article);
 
 	}
