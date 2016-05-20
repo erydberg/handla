@@ -80,6 +80,15 @@ public class TestProcessSentence {
         assertThat(details.getUnit(),equalTo("kg"));
     }
     
+    @Test
+    public void shouldSplitAndReturnADetailedTitleObject8(){
+        String incomingItem = "2 paket potatis fasta";
+        AnalyzeCentence analyze = new AnalyzeCentence();
+        TitleDetail details = analyze.splitCentence(incomingItem);
+        assertThat(details.getTitle(),equalTo("potatis fasta"));
+        assertThat(details.getQuantity(),equalTo("2"));
+        assertThat(details.getUnit(),equalTo("paket"));
+    }
 }    
     
 

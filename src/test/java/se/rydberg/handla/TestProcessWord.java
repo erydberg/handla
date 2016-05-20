@@ -32,5 +32,4 @@ public class TestProcessWord {
         
         assertFalse(analyzeWord.isNumericAndString(incomingText));
     }
-
 }

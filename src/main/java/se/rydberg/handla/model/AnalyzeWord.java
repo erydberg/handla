@@ -14,13 +14,12 @@ public class AnalyzeWord {
     }
 
     public boolean isNumeric(String word) {
-        System.out.println("testar om " + word + " är numeriskt");
         return word.matches("-?\\d+(\\,\\d+)?");
     }
 
     public boolean isUnit(String word){
         //lägga till mer logik för att hitta om det är ett känt begrepp
-        List<String> approvedUnits = Arrays.asList("gram","g","kg","hg","hekto","dl","l","liter","deciliter","ml","styck","st","stycken","burk","burkar","mililiter", "flaska","flaskor"); 
+        List<String> approvedUnits = Arrays.asList("gram","g","kg","hg","hekto","dl","l","liter","deciliter","ml","styck","st","stycken","burk","burkar","mililiter", "flaska","flaskor","paket","pkt"); 
         for(String unit:approvedUnits){
             if(unit.equalsIgnoreCase(word)){
                 return true;
