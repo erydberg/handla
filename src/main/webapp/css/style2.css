@@ -229,6 +229,11 @@ fieldset {
   margin-left: 40px;
 }
 
-.del{
+.del, .edit, .close{
 	float: right;
+}
+
+.edittools{
+	float:right;
+	padding-left:10px;
 }

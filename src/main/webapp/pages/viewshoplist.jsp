@@ -7,9 +7,10 @@
 <head>
 <title>Inköpslista ${shoplist.name }</title>
 <jsp:include page="include_metadata.jsp" flush="false"></jsp:include>
-<script src="${pageContext.request.contextPath}/js/jquery-2.1.0.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
 <script>
 var path = '${pageContext.request.contextPath}';
+var listid = '${shoplist.listId}';
 $(document).ready(function () {
   $('input:checkbox').change(function () {
       if ($(this).prop("checked")) {
@@ -22,6 +23,27 @@ $(document).ready(function () {
 	var idvalue = $(this).prop('id');
 		markBoughtArticle(idvalue,'false');
    });
+  $('.list').on("click",".edit", function(){
+	  var articleId = $(this).data('id');
+	 $(this).attr("src", path + "/css/close.png");
+	 $(this).attr("class","close");
+	 
+	 //lägga till länk för ta bort
+	 var delButton = "<a class='edittools' href='"+ path +"/article/delete/"+ articleId +"/from/"+listid+"'><img src='" + path + "/css/delete.png'></a>";
+	 $(delButton).insertAfter(this);
+	 //lägga till funktion för edit
+	 var editButton = "<a class='edittools' href='javascript:editArticle("+articleId+")'><img src='" + path + "/css/edit3.png'></a>";
+	 $(editButton).insertAfter(this); 
+
+	   
+  });
+  $('.list').on("click",".close",function(){
+	  $('.edittools').remove();
+	  $(this).attr("src", path + "/css/edit2.png");
+	  $(this).attr("class","edit");
+	  
+		  
+  });
   if(!window.Touch){
   	$("#title").focus();
   }
@@ -44,6 +66,22 @@ $(document).ready(function () {
 }
    function reloadPage(){
 	   window.location = window.location.pathname;
+   }
+   function showEditButtons(articleId){
+	   var delButton = "<a class='edittools' href='"+ path +"/article/delete/"+ articleId +"/from/"+listid+"'><img src='" + path + "/css/delete.png'></a>";
+	   var closeButton = "<a class='edittools' href='javascript:closeEditMode("+ articleId + ");'><img src='" + path + "/css/close.png'></a>";
+	   var editButton = "<a class='edittools' href='javascript:editArticle("+articleId+")'><img src='" + path + "/css/edit3.png'></a>";
+	   $("#editbutton"+articleId).html(closeButton + editButton + delButton);
+   }
+   
+   function closeEditMode(articleId){
+	   var editModeButton = "<a class='edit' href='javascript:showEditButtons("+articleId+");''><img src='"+path+"/css/edit2.png'></a>";
+	   $("#editbutton"+articleId).html(editModeButton);
+   }
+   
+   function editArticle(articleId){
+	  //get the text
+	  
    }
    
 </script>
@@ -77,7 +115,7 @@ $(document).ready(function () {
 		 <c:if test="${not empty article.unit }">
 		 ${article.unit}
 		</c:if>
-	</label> <a href="${pageContext.request.contextPath}/article/delete/${article.id}/from/${shoplist.listId}" class="del"><img src="${pageContext.request.contextPath}/css/delete.png"></a></li>	
+	</label><img class="edit" data-id="${article.id}" src="${pageContext.request.contextPath}/css/edit2.png"></li>	
 </c:forEach>
 </ul>
 
