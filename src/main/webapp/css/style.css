@@ -213,6 +213,9 @@ fieldset {
   height: auto;
   padding: 10px;
   }
+  .notepad .list li label{
+  	margin-right:20%;
+  }
 .notepad .list li:hover {
   background-color: #f0f0f0;
   -webkit-transition: all 0.2s;
@@ -231,9 +234,11 @@ fieldset {
 
 .del, .edit, .close{
 	float: right;
+	z-index:99;
 }
 
 .editbutton, .delbutton{
 	float:right;
 	padding-right:10px;
+	z-index:99;
 }

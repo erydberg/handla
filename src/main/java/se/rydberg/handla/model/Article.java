@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 @Entity
@@ -24,8 +25,9 @@ public class Article implements Serializable {
     private Timestamp updated;
     private TypeOfArticle type;
     private ShopList shopList;
-
+    private String unit;
     private String quantity;
+    private String completeTitle;
 
 
     public Article(){
@@ -34,6 +36,22 @@ public class Article implements Serializable {
 
 
 
+    @Transient
+    public String getCompleteTitle(){
+        StringBuilder returnText = new StringBuilder();
+        if(title!=null){
+            returnText.append(title);
+            returnText.append(" ");
+        }
+        if(quantity!=null){
+            returnText.append(quantity);
+            returnText.append(" ");
+        }
+        if(unit!=null){
+            returnText.append(unit);
+        }
+        return returnText.toString().trim();
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "article_sequence")
@@ -110,7 +128,7 @@ public class Article implements Serializable {
     public void setUnit(String unit) {
         this.unit = unit;
     }
-    private String unit;
+    
 
 
 }

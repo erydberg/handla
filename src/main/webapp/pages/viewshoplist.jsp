@@ -41,10 +41,11 @@ $(document).ready(function () {
 	  $(this).next('.delbutton').remove();
 	  $(this).attr("src", path + "/css/edit2.png");
 	  $(this).attr("class","edit");
+	  $('#title').val('');
+	  $('#id').val('');
   });
   $('.list').on("click",".editbutton",function(){
 	  var text = $(this).data('text').trim();
-	  alert(text);
 	  var articleId = $(this).data('id');
 	  $('#title').val(text);
 	  $('#id').val(articleId);
@@ -112,15 +113,8 @@ $(document).ready(function () {
 <form:form method="post" action="${pageContext.request.contextPath}/shoplist/reload/" modelAttribute="shoplist" cssClass="notepad">
 <ul class="list">
 <c:forEach items="${shoplist.articles }" var="article" varStatus="counter">
-	<li><form:checkbox path="articles[${counter.index}].bought" id="${article.id}"/><label for="${article.id}"> 
-		${article.title}
-		<c:if test="${not empty article.quantity }">
-		 ${article.quantity}
-		 </c:if> 
-		 <c:if test="${not empty article.unit }">
-		 ${article.unit}
-		</c:if>
-	</label><img class="edit" data-id="${article.id}" src="${pageContext.request.contextPath}/css/edit2.png"></li>	
+	<li><form:checkbox path="articles[${counter.index}].bought" id="${article.id}"/><label for="${article.id}"> ${article.completeTitle}</label>
+	<img class="edit" data-id="${article.id}" src="${pageContext.request.contextPath}/css/edit2.png"></li>	
 </c:forEach>
 </ul>
 

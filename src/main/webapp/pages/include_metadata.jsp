@@ -3,7 +3,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="apple-touch-icon" href="${pageContext.request.contextPath}/css/apple-touch-icon.png" />
 <link href="${pageContext.request.contextPath}/css/favicon.png" rel="shortcut icon" type="image/png" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style2.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
 <script type="text/javascript">
 	if (("standalone" in window.navigator) && window.navigator.standalone) {
 		var noddy, remotes = false;
