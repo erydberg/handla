@@ -233,7 +233,7 @@ fieldset {
 	float: right;
 }
 
-.edittools{
+.editbutton, .delbutton{
 	float:right;
-	padding-left:10px;
+	padding-right:10px;
 }

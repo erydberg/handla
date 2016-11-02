@@ -25,24 +25,29 @@ $(document).ready(function () {
    });
   $('.list').on("click",".edit", function(){
 	  var articleId = $(this).data('id');
+	  var articleText = $(this).prev().text().trim();
 	 $(this).attr("src", path + "/css/close.png");
 	 $(this).attr("class","close");
 	 
 	 //lägga till länk för ta bort
-	 var delButton = "<a class='edittools' href='"+ path +"/article/delete/"+ articleId +"/from/"+listid+"'><img src='" + path + "/css/delete.png'></a>";
+	 var delButton = "<a class='delbutton' href='"+ path +"/article/delete/"+ articleId +"/from/"+listid+"'><img src='" + path + "/css/delete.png'></a>";
 	 $(delButton).insertAfter(this);
 	 //lägga till funktion för edit
-	 var editButton = "<a class='edittools' href='javascript:editArticle("+articleId+")'><img src='" + path + "/css/edit3.png'></a>";
+	 var editButton = "<img class='editbutton' data-id='"+articleId+"' data-text='"+articleText+"' src='" + path + "/css/edit3.png'>";
 	 $(editButton).insertAfter(this); 
-
-	   
   });
   $('.list').on("click",".close",function(){
-	  $('.edittools').remove();
+	  $(this).next('.editbutton').remove();
+	  $(this).next('.delbutton').remove();
 	  $(this).attr("src", path + "/css/edit2.png");
 	  $(this).attr("class","edit");
-	  
-		  
+  });
+  $('.list').on("click",".editbutton",function(){
+	  var text = $(this).data('text').trim();
+	  alert(text);
+	  var articleId = $(this).data('id');
+	  $('#title').val(text);
+	  $('#id').val(articleId);
   });
   if(!window.Touch){
   	$("#title").focus();
