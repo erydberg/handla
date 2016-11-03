@@ -49,6 +49,7 @@ $(document).ready(function () {
 	  var articleId = $(this).data('id');
 	  $('#title').val(text);
 	  $('#id').val(articleId);
+	  $('#title').focus();
   });
   if(!window.Touch){
   	$("#title").focus();
