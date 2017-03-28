@@ -47,7 +47,6 @@ public class ArticleController {
 				shopList.getArticles().add(article);
 				shopListService.saveShopList(shopList);
 			} catch (ArticleNotSavedException | NumberFormatException | ShopListNotFoundException | ShopListNotSavedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -61,18 +60,13 @@ public class ArticleController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void markBoughtStatus(@PathVariable String id, @PathVariable String bought){
 		logger.info("Entering restanrop markbought med id: " + id + " och ändringen " + bought);
-		Integer shopListId = 0;
 		try {
 			Article article = articleService.getArticleById(Integer.parseInt(id));
+			article.setTitle(article.getCompleteTitle()); //då titeln annars bara består av texten, ej mängd och värde
 			logger.info("found article: " + article.getTitle());
-			shopListId = article.getShopList().getListId();
 			article.setBought(Boolean.parseBoolean(bought));
 			articleService.saveArticle(article);
-		} catch (NumberFormatException | ArticleNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ArticleNotSavedException e) {
-			// TODO Auto-generated catch block
+		} catch (NumberFormatException | ArticleNotFoundException| ArticleNotSavedException e) {
 			e.printStackTrace();
 		}
 		
@@ -97,7 +91,6 @@ public class ArticleController {
 					try {
 						shopListService.saveShopList(shopList);
 					} catch (ShopListNotSavedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
@@ -109,16 +102,6 @@ public class ArticleController {
 		} catch (NumberFormatException | ShopListNotFoundException e1) {
 			// Lägga på felmeddelande
 			return "redirect:/";
-			//			e1.printStackTrace();
 		}
-		//kanske flytta in i catch
-		//		if(shopList==null){
-		//			return "redirect:/";
-		//		}else{
-		//			String redirectUrl = "/shoplist/open/" + shopList.getListId();
-		//			logger.info("redirecturl: " + redirectUrl);
-		//		    return "redirect:" + redirectUrl;		
-
 	}
-
 }

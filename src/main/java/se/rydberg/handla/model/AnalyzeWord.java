@@ -10,7 +10,7 @@ public class AnalyzeWord {
 
 
     public AnalyzeWord(){
-
+        //Empty
     }
 
     public boolean isNumeric(String word) {
@@ -19,7 +19,7 @@ public class AnalyzeWord {
 
     public boolean isUnit(String word){
         //lägga till mer logik för att hitta om det är ett känt begrepp
-        List<String> approvedUnits = Arrays.asList("gram","g","kg","hg","hekto","dl","l","liter","deciliter","ml","styck","st","stycken","burk","burkar","mililiter", "flaska","flaskor","paket","pkt"); 
+        List<String> approvedUnits = Arrays.asList("gram","g","kg","hg","hekto","dl","l","liter","deciliter","ml","styck","st","stycken","burk","burkar","mililiter", "flaska","flaskor","paket","pkt","påse","påsar","msk","tsk","kruka"); 
         for(String unit:approvedUnits){
             if(unit.equalsIgnoreCase(word)){
                 return true;
@@ -41,7 +41,7 @@ public class AnalyzeWord {
     public TextNumber splitNumericAndStingIfFirstLetterIsDigit(String word){
         TextNumber textNumber = new TextNumber();
         if(Character.isDigit(word.charAt(0))){
-            return textNumber = splitNumericAndString(word);
+            return splitNumericAndString(word);
         }else{
             textNumber.setText(word);
             textNumber.setNumber("");
@@ -65,7 +65,7 @@ public class AnalyzeWord {
 
         TextNumber textNumber = new TextNumber();
         textNumber.setNumber(number.toString());
-        textNumber.setText(text.toString());;
+        textNumber.setText(text.toString());
 
         return textNumber;
     }

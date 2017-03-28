@@ -22,8 +22,6 @@ import se.rydberg.handla.model.Article;
 import se.rydberg.handla.model.ShopList;
 import se.rydberg.handla.service.ShopListService;
 
-
-
 @RequestMapping("/shoplist")
 @Controller
 @SessionAttributes("shoplist")
@@ -41,15 +39,12 @@ public class ShopListController {
 		ModelMap map = new ModelMap();
 		map.addAttribute("shoplist", shopList);
 		return new ModelAndView("editshoplist", map);
-		
 	}
 	
 	
 	@RequestMapping(value="/save",method=RequestMethod.POST)
 	public String saveShopList(@ModelAttribute("shoplist")ShopList shopList){
 		logger.info("start saveShopList: " + shopList.getName());
-		
-		
 		try{
 			ShopList shopListOnDisc = shopListService.getShopListById(shopList.getListId());
 			shopList.setArticles(shopListOnDisc.getArticles());
@@ -97,34 +92,7 @@ public class ShopListController {
         }
 	    return "redirect:/shoplist/open/" + id;
 	}
-	
-	
-	//Används inte längre
-	@RequestMapping(value="/markbought",method=RequestMethod.POST)
-	public String markBought(@ModelAttribute("shoplist")ShopList shopList){
-		logger.info("Entering markbought with shoplist: " + shopList.getName() + " with no of articles: " + shopList.getArticles().size());		
-		logger.info("Kolla vad som är markerat innan sparat");
-		for(Article article:shopList.getArticles()){
-			logger.info("artikel: " + article.getTitle() + " köpt: " + article.isBought());
-		}
-		String redirectUrl = "/shoplist/";
-		redirectUrl = "/shoplist/open/" + shopList.getListId();
-		try {
-			shopListService.saveShopList(shopList);
-		} catch (ShopListNotSavedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		logger.info("Kolla vad som är markerat efter sparat");
-		for(Article article:shopList.getArticles()){
-			logger.info("artikel: " + article.getTitle() + " köpt: " + article.isBought());
-		}
-		
-		
-		logger.info("redirecturl: " + redirectUrl);
-	    return "redirect:" + redirectUrl;
-	}
-	
+
 	@RequestMapping(value="/delete/{id}")
 	public String deleteShopList(@PathVariable String id){
 		try {
