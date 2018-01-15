@@ -2,11 +2,12 @@ package se.rydberg.handla.dao;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
+
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import se.rydberg.handla.exception.UserNotFoundException;
 import se.rydberg.handla.model.User;
@@ -33,7 +34,6 @@ public class UserDaoImpl implements UserDao {
     @Transactional
     public User getUserByName(String username) throws UserNotFoundException {
         User user = null;
-//      user = (User)sessionFactory.getCurrentSession().get(User.class,username);        
         @SuppressWarnings("unchecked")
         List<User> users = (List<User>)sessionFactory.getCurrentSession().createQuery("from User ur where ur.username=:username").setString("username", username).list();
         if(users==null||users.isEmpty()){

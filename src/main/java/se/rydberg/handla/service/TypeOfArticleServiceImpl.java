@@ -1,9 +1,9 @@
 package se.rydberg.handla.service;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import se.rydberg.handla.dao.TypeOfArticleDao;
 import se.rydberg.handla.exception.TypeOfArticleNotDeletedException;

@@ -17,7 +17,7 @@ import se.rydberg.handla.service.ShopListService;
 public class TestAutowireCanBeRemoved {
     
     @Autowired
-//    @Qualifier("shopListService")
+    @Qualifier("shopListService")
     ShopListService shopListService;
     
     @Test
